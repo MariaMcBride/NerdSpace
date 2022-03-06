@@ -1,0 +1,171 @@
+{% extends "base.html" %} {% block cover %} {% endblock %} {% block title
+%}Login{% endblock %} {% block body %}
+<body class="login-body">
+  {% endblock %} {% block navlink %} Don't Have an Account?
+  <!-- Button trigger modal -->
+  <button
+    type="button"
+    class="modal-link"
+    data-bs-toggle="modal"
+    data-bs-target="#staticBackdrop"
+  >
+    Sign Up</button
+  >{% endblock %} {% block sidenav %}{% endblock %}{% block content %}
+  <div class="login-card mx-auto p-4">
+    <div class="card-body pb-0">
+      <h4 class="card-title text-center mb-3">Log In</h4>
+      <form action="/login" method="post">
+        {% for error in get_flashed_messages(category_filter=['login']) %}
+        <p class="alert alert-danger fade show">{{ error }}</p>
+        {% endfor %}
+        <div class="mb-3">
+          <label for="email" class="form-label-email">Email</label>
+          <input
+            type="email"
+            class="form-control mb-2"
+            id="email"
+            name="email"
+          />
+          <label for="password" class="form-label-password">Password</label>
+          <input
+            type="password"
+            class="form-control mb-2"
+            id="password"
+            name="password"
+          />
+          <div class="text-center">
+            <a href="#" class="reset"
+              >Forgot Your Password? Too Bad. For Now.</a
+            >
+          </div>
+          <div class="text-center mt-4">
+            <button type="submit" class="btn justify-center mx-auto">
+              Log In
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <footer>Unlimited Nerd Works @ 2021</footer>
+  <!-- Modal -->
+  <div
+    class="modal fade"
+    id="staticBackdrop"
+    data-bs-backdrop="static"
+    data-bs-keyboard="false"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="staticBackdropLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header pb-0">
+          <h4 class="modal-title p-3"></h4>
+          <button
+            type="button"
+            class="close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          >
+            <span class="px-2 py-1" aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body p-5 pt-0">
+          <h4
+            class="modal-title px-3 py-1 mb-3"
+            id="staticBackdropLabel modalTitle"
+          >
+            Sign Up
+          </h4>
+          <form action="/register" method="post">
+            <div class="mb-3 px-3">
+              <label for="first_name" class="form-label-first_name"
+                >First Name</label
+              >
+              <input
+                type="text"
+                class="form-control mb-2"
+                id="first_name"
+                name="first_name"
+              />
+              {% for error in
+              get_flashed_messages(category_filter=['first_name']) %}
+              <p class="alert alert-danger fade show">{{ error }}</p>
+              {% endfor %}
+              <label for="last_name" class="form-label-last_name"
+                >Last Name</label
+              >
+              <input
+                type="text"
+                class="form-control mb-2"
+                id="last_name"
+                name="last_name"
+              />
+              {% for error in
+              get_flashed_messages(category_filter=['last_name']) %}
+              <p class="alert alert-danger fade show">{{ error }}</p>
+              {% endfor %}
+              <label for="email" class="form-label-email">Email</label>
+              <input
+                type="email"
+                class="form-control mb-2"
+                id="email"
+                name="email"
+              />
+              {% for error in get_flashed_messages(category_filter=['email']) %}
+              <p class="alert alert-danger fade show">{{ error }}</p>
+              {% endfor %}
+              <label for="password" class="form-label-password">Password</label>
+              <input
+                type="password"
+                class="form-control mb-2"
+                id="password"
+                name="password"
+              />
+              {% for error in get_flashed_messages(category_filter=['password'])
+              %}
+              <p class="alert alert-danger fade show">{{ error }}</p>
+              {% endfor %}
+              <label for="confirm_password" class="form-label-password"
+                >Confirm Password</label
+              >
+              <input
+                type="password"
+                class="form-control mb-2"
+                id="confirm_password"
+                name="confirm_password"
+              />
+              {% for error in
+              get_flashed_messages(category_filter=['confirm_password']) %}
+              <p class="alert alert-danger fade show">{{ error }}</p>
+              {% endfor %}
+              <label for="dob" class="form-label-dob">Birthday</label>
+              <input type="date" class="form-control mb-2" name="dob" />
+            </div>
+            <input type="hidden" name="avatar" value="user-circle.png" />
+            <input type="hidden" name="cover_photo" value="default-cover.jpg" />
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn modal-btn mx-auto"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+              <button
+                type="submit"
+                class="btn justify-center modal-btn mx-auto"
+                id="register_btn"
+              >
+                Sign Up
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    {% endblock %}
+  </div>
+</body>

@@ -1,0 +1,181 @@
+{% extends "base.html" %}
+
+{% block title %}Edit Profile{% endblock %} {% block
+navlink %}
+<span class="nav-item dropdown">
+  <a class="
+      nav-link
+      dropdown-toggle
+      d-flex
+      align-items-center
+      justify-content-end
+    " href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"><span
+      class="profile-icon d-flex align-items-center justify-content-end">
+      <img class="me-3" src="{{ url_for('static', filename='img/') }}{{ user.avatar }}" alt="profile icon" />
+      {{ user.full_name }}
+    </span>
+  </a>
+  <ul class="dropdown-menu dropdown-menu-dark" id="drop-menu" aria-labelledby="navbarDropdown">
+    <li>
+      <a class="dropdown-item" href="/profile/{{ user.id }}">View Profile</a>
+    </li>
+    <li><a class="dropdown-item" href="/logout">Log Out</a></li>
+  </ul>
+</span>
+{% endblock %} {% block content %}
+<!--Container Main start-->
+<div id="main">
+  <div class="container">
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button"
+          role="tab" aria-controls="home" aria-selected="true">
+          Avatar
+        </button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button"
+          role="tab" aria-controls="profile" aria-selected="false">
+          Personal Info
+        </button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button"
+          role="tab" aria-controls="contact" aria-selected="false">
+          Photo Album
+        </button>
+      </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+      <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+        <form action="/profile/update/{{ user.id }}" class="edit-card" style="border-top-left-radius: 0" method="post"
+          enctype="multipart/form-data">
+          <h4 class="mb-3">Change Avatar</h4>
+          <fieldset>
+            <div class="form-group">
+              <div class="image-upload flex justify-content-evenly pt-0" style="color: #ececec">
+                <img src="{{ url_for('static', filename='img/') }}{{ user.avatar }}" class="img-thumbnail mx-auto mb-1"
+                  alt="avatar">
+              </div>
+              <div class="post-update flex justify-content-evenly">
+                <input type="file" name="avatar" accept="image/*" onchange="previewFile(this)" class="" id="avatar">
+                <button class="btn btn-sm flex" type="submit">Save Changes</button>
+              </div>
+            </div>
+          </fieldset>
+        </form>
+        <hr>
+        <form action="/profile/updatecover/{{ user.id }}" class="edit-card mb-3" method="post"
+          enctype="multipart/form-data">
+          <h4 class="mb-3">Change Cover</h4>
+          <fieldset>
+            <div class="form-group">
+              <div class="image-upload flex justify-content-evenly pt-0" style="color: #ececec">
+                <img src="{{ url_for('static', filename='img/') }}{{ user.cover_photo }}"
+                  class="img-thumbnail mx-auto mb-1" alt="cover_photo">
+              </div>
+              <div class="post-update flex justify-content-evenly">
+                <input type="file" name="cover_photo" accept="image/*" onchange="previewFile(this)" class=""
+                  id="cover_photo">
+                <button class="btn btn-sm flex" type="submit">Save Changes</button>
+              </div>
+            </div>
+          </fieldset>
+        </form>
+
+      </div>
+      <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+        <form action="/profile/update/{{ user.id }}" class="edit-card" style="border-top-left-radius: 0" method="post">
+          <h4 class="mb-3">Personal Information</h4>
+          <fieldset>
+            <div class="form-group">
+              <label class="form-label" for="profileFirstName">First Name</label>
+              <input type="text" class="form-control mb-2" id="profileFirstName" name="first_name"
+                value="{{ user.first_name }}" />
+              {% for error in
+              get_flashed_messages(category_filter=['first_name']) %}
+              <p class="alert alert-danger fade show">{{ error }}</p>
+              {% endfor %}
+              <label class="form-label" for="profileLastName">Last Name</label>
+              <input type="text" class="form-control mb-2" id="profileLastName" name="last_name"
+                value="{{ user.last_name }}" />
+              {% for error in
+              get_flashed_messages(category_filter=['last_name']) %}
+              <p class="alert alert-danger fade show">{{ error }}</p>
+              {% endfor %}
+              <label class="form-label" for="profileEmail">Email</label>
+              <input type="email" class="form-control mb-2" id="profileEmail" name="email" value="{{ user.email }}" />
+              {% for error in
+              get_flashed_messages(category_filter=['email']) %}
+              <p class="alert alert-danger fade show">{{ error }}</p>
+              {% endfor %}
+            </div>
+          </fieldset>
+          <div class="post-update flex justify-content-end">
+            <button class="btn btn-sm flex" type="submit">Save Changes</button>
+          </div>
+        </form>
+        <hr />
+        <form action="/profile/update/{{ user.id }}" class="edit-card" method="post">
+          <h5 class="mb-3 pt-1">Change Password</h5>
+          <fieldset class="mb-xl">
+            <div class="form-group">
+              <label class="form-label" for="profileNewPassword">New Password</label>
+              <div class="">
+                <input type="text" class="form-control mb-2" id="profileNewPassword" name="password" />
+                {% for error in
+                get_flashed_messages(category_filter=['password']) %}
+                <p class="alert alert-danger fade show">{{ error }}</p>
+                {% endfor %}
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="profileNewPasswordRepeat">Repeat New Password</label>
+              <div class="">
+                <input type="text" class="form-control mb-2" id="profileNewPasswordRepeat" name="confirm_password" />
+                {% for error in
+                get_flashed_messages(category_filter=['confirm_password']) %}
+                <p class="alert alert-danger fade show">{{ error }}</p>
+                {% endfor %}
+              </div>
+            </div>
+          </fieldset>
+          <div class="post-update flex justify-content-end">
+            <button class="btn btn-sm flex" type="submit">Save Changes</button>
+          </div>
+        </form>
+      </div>
+      <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+        <form action="/profile/update/{{ user.id }}" class="edit-card" style="border-top-left-radius: 0" method="post">
+          <h4 class="mb-3">Upload / Delete Photos</h4>
+          <fieldset>
+            <div class="row row-cols-1 row-cols-md-2 g-4">
+              <div class="col">
+                <img src="{{ url_for('static', filename='img/pic1.jpg') }}" class="img-thumbnail" alt="..." />
+              </div>
+              <div class="col">
+                <img src="{{ url_for('static', filename='img/pic2.jpg') }}" class="img-thumbnail" alt="..." />
+              </div>
+              <div class="col">
+                <img src="{{ url_for('static', filename='img/pic4.jpg') }}" class="img-thumbnail" alt="..." />
+              </div>
+              <div class="col">
+                <img src="{{ url_for('static', filename='img/pic3.jpg') }}" class="img-thumbnail" alt="..." />
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="image-upload flex justify-content-end pt-4" style="color: #ececec">
+                <label for="file-input" class="flex">
+                  <i class="material-icons btn-icon">photo_library</i><span class="icon-text">Upload Photo</span>
+                </label>
+                <input id="file-input" type="file" name="photo"
+                  onchange="this.parentNode.nextSibling.value = this.value" />
+              </div>
+            </div>
+          </fieldset>
+      </div>
+    </div>
+    <!--Container Main end-->
+    {% endblock %}
+  </div>
+</div>

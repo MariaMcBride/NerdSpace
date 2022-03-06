@@ -1,0 +1,305 @@
+{% extends "base.html" %} 
+{% block title %}Dashboard{% endblock %} {% block
+navlink %}
+<span class="nav-item dropdown">
+  <a
+    class="
+      nav-link
+      dropdown-toggle
+      d-flex
+      align-items-center
+      justify-content-end
+    "
+    href="#"
+    id="navbarDropdown"
+    role="button"
+    data-bs-toggle="dropdown"
+    aria-expanded="false"
+    ><span class="profile-icon d-flex align-items-center justify-content-end">
+      <img
+        class="me-3"
+        src="{{ url_for('static', filename='img/') }}{{ user.avatar }}"
+        alt="profile icon"
+      />
+      {{ user.full_name }}
+    </span>
+  </a>
+  <ul
+    class="dropdown-menu dropdown-menu-dark"
+    id="drop-menu"
+    aria-labelledby="navbarDropdown"
+  >
+    <li><a class="dropdown-item" href="#">View Profile</a></li>
+    <li>
+      <a class="dropdown-item" href="/profile/edit/{{ user.id }}"
+        >Edit Profile</a
+      >
+    </li>
+    <li><a class="dropdown-item" href="/logout">Log Out</a></li>
+  </ul>
+</span>
+{% endblock %} {% block content %}
+<!--Container Main start-->
+<div id="main">
+  <div class="container2">
+    <div class="profile-banner d-flex justify-content-end align-items-end">
+      <div class="cover-icon">
+        <button type="button" class="follow">
+          <i class="material-icons md-36">person_add</i>
+        </button>
+      </div>
+    </div>
+    
+    <div class="container3">
+      <div class="row">
+        <div class="col-1">
+          <div class="card mb-3">
+            <div class="card-header2 text-center">
+              <div class="card-body flex avatar-container mx-auto">
+              <img
+              src="{{ url_for('static', filename='img/') }}{{ user.avatar }}"
+              class="img-circle profile-avatar"
+              alt="User avatar"
+            />
+              </div>
+            </div>
+
+            <div class="card-body biobody">
+              <p class="card-text"><strong>Bio:</strong> Everything is broken.
+              </p>
+              <p class="card-text"><strong>Occupation:</strong> Struggling student
+              </p>
+              <p class="card-text"><strong>Location:</strong> Friday Harbor, WA
+              </p>
+            </div>
+          </div>
+          <div class="card mb-3">
+            <div class="card-header text-white text-center p-3"><h5 class="m-0">Photos</h5></div>
+            <div class="card-body">
+              <div class="row row-cols-1 row-cols-md-2 g-4">
+                <div class="col">
+                  <img
+                    src="{{ url_for('static', filename='img/pic1.jpg') }}"
+                    class="img-thumbnail"
+                    alt="..."
+                  />
+                </div>
+                <div class="col">
+                  <img
+                    src="{{ url_for('static', filename='img/pic2.jpg') }}"
+                    class="img-thumbnail"
+                    alt="..."
+                  />
+                </div>
+                <div class="col">
+                  <img
+                    src="{{ url_for('static', filename='img/pic4.jpg') }}"
+                    class="img-thumbnail"
+                    alt="..."
+                  />
+                </div>
+                <div class="col">
+                  <img
+                    src="{{ url_for('static', filename='img/pic3.jpg') }}"
+                    class="img-thumbnail"
+                    alt="..."
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-2">
+          <div class="row profile-header flex">
+            <div class="pro-header flex justify-content-between">
+            <h3 class="m-0 p-0">{{ user.full_name }}</h3>
+            <span class="followers text-center">
+              <strong>Followers</strong>
+                <br>{{ follower_count }}
+            </span>
+            </div>
+          </div>
+          <div class="panel">
+            <div class="panel-body">
+              <form
+                action="#"
+                method="post"
+                enctype="multipart/form-data"
+              ></form>
+              <textarea
+                class="form-control"
+                rows="2"
+                style="
+                  background-color: transparent;
+                  border: none;
+                  font-size: 14px;
+                "
+                placeholder="What's going on, {{ user.first_name }}?"
+              ></textarea>
+              <div
+                class="
+                  post-btns
+                  flex
+                  align-items-center
+                  justify-content-between
+                "
+              >
+                <div class="flex">
+                  <div class="image-upload">
+                    <input id="file-input" type="file" />
+                  </div>
+                </div>
+                <div class="post-update flex">
+                  <button class="btn btn-sm flex" type="submit">
+                    Post
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="feed-body">
+            <!-- Timeline -->
+            <!--===================================================-->
+            <div class="timeline">
+              <!-- Timeline header -->
+              <div class="timeline-header feed-top">
+                <div class="timeline-header-title"><h5 class="mb-0">Newsfeed</h5></div>
+              </div>
+              <div class="timeline-entry">
+                <div class="timeline-stat">
+                  <div class="timeline-icon">
+                    <img
+                      src="{{ url_for('static', filename='img/papajim.png') }}"
+                      alt="Jim Reeder icon"
+                    />
+                  </div>
+                  <div class="timeline-time">30 Min ago</div>
+                </div>
+                <div class="timeline-label">
+                  <p class="mar-no pad-btm">
+                    <a href="#" class="">Papa Jim</a> shared an image
+                  </p>
+                  <div class="img-holder">
+                    <img
+                      src="{{ url_for('static', filename='img/pineapplememe.jpg') }}"
+                      alt="Pineapple pizza"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="timeline-entry">
+                <div class="timeline-stat">
+                  <div class="timeline-icon bg-danger">
+                    <i class="fa fa-building fa-lg"></i>
+                  </div>
+                  <div class="timeline-time">2 Hours ago</div>
+                </div>
+                <div class="timeline-label">
+                  <h6 class="mar-no pad-btm">
+                    <a href="#" class="text-danger">Project Meeting</a>
+                  </h6>
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
+                    sed diam nonummy nibh euismod tincidunt.
+                  </p>
+                </div>
+              </div>
+              <div class="timeline-entry">
+                <div class="timeline-stat">
+                  <div class="timeline-icon">
+                    <img
+                      src="{{ url_for('static', filename='img/christian.jfif') }}"
+                      alt="Profile picture"
+                    />
+                  </div>
+                  <div class="timeline-time">3 Hours ago</div>
+                </div>
+                <div class="timeline-label">
+                  <p class="mar-no pad-btm">
+                    <a href="#" class="">Christian Land</a> commented on
+                    <a href="#">Morning Algos</a>
+                  </p>
+                  <blockquote class="bq-sm bq-open mb-0">
+                    Here's how you can write that in half a line.
+                  </blockquote>
+                </div>
+              </div>
+              <div class="timeline-entry">
+                <div class="timeline-stat">
+                  <div class="timeline-icon bg-purple">
+                    <i class="fa fa-check fa-lg"></i>
+                  </div>
+                  <div class="timeline-time">5 Hours ago</div>
+                </div>
+                <div class="timeline-label">
+                  <img
+                    class="img-xs img-circle"
+                    src="{{ url_for('static', filename='img/austin.jpg') }}"
+                    alt="Profile picture"
+                  />
+                  <a href="#" class="">Austin Kim</a> followed you.
+                </div>
+              </div>
+              <!-- Timeline header -->
+              <div class="timeline-header">
+                <div class="timeline-header-title">Yesterday</div>
+              </div>
+              <div class="timeline-entry">
+                <div class="timeline-stat">
+                  <div class="timeline-icon bg-info">
+                    <i class="fa fa-envelope fa-lg"></i>
+                  </div>
+                  <div class="timeline-time">15:45</div>
+                </div>
+                <div class="timeline-label">
+                  <h6 class="text-info mar-no pad-btm">Lorem ipsum</h6>
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
+                    sed diam nonummy nibh euismod tincidunt.
+                  </p>
+                </div>
+              </div>
+              <div class="timeline-entry">
+                <div class="timeline-stat">
+                  <div class="timeline-icon bg-success">
+                    <i class="fa fa-thumbs-up fa-lg"></i>
+                  </div>
+                  <div class="timeline-time">13:27</div>
+                </div>
+                <div class="timeline-label">
+                  <img
+                    class="img-xs img-circle"
+                    src="{{ url_for('static', filename='img/toribio.jpg') }}"
+                    alt="Profile picture"
+                  />
+                  <a href="#" class="">Eric Toribio</a> liked
+                  <a href="#">NerdSpace</a>
+                </div>
+              </div>
+              <div class="timeline-entry">
+                <div class="timeline-stat">
+                  <div class="timeline-icon"></div>
+                  <div class="timeline-time">11:27</div>
+                </div>
+                <div class="timeline-label">
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
+                    sed diam nonummy nibh euismod tincidunt.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <!--===================================================-->
+            <!-- End Timeline -->
+          </div>
+          <!-- </div> -->
+        </div>
+        <!--Container Main end-->
+      </div>
+    </div>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}

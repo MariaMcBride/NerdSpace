@@ -1,0 +1,240 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: Roboto, "Open Sans", sans-serif;
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+nav {
+  position: fixed;
+}
+
+.navbar-brand img {
+  height: 70px;
+}
+
+a,
+.dropdown-menu a,
+.modal-link {
+  color: #6747a0 !important;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.modal-link {
+  margin-left: 5px;
+  background: none !important;
+  border: none;
+  padding: 0 !important;
+}
+
+a:hover,
+a:focus,
+.modal-link:hover {
+  color: #735d9e !important;
+  text-shadow: 0 0 10px #735d9e;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+nav,
+#drop-menu,
+.modal-header,
+.modal-body,
+.modal-footer,
+.close,
+.close span {
+  background-color: #20222a;
+  border: transparent;
+  color: #fff;
+}
+
+.profile-icon img {
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px #ebeef0;
+  background-color: #000;
+  height: 46px;
+  width: 46px;
+}
+
+.dropdown-toggle::after {
+  margin-right: -13px;
+  color: transparent;
+}
+
+.dropdown-item {
+  font-size: 14px;
+}
+
+.login-body {
+  background-color: #000;
+  background: url(../img/arcane-wallpaper.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  color: #fff;
+}
+
+body,
+.container {
+  background-color: #000;
+}
+
+.login-card {
+  max-width: 400px;
+  margin: 250px;
+  background-color: #20222a;
+}
+
+.form-label,
+.form-label-first_name,
+.form-label-last_name,
+.form-label-email,
+.form-label-password,
+.form-label-dob,
+.reset {
+  margin-bottom: 5px;
+  font-size: 10px;
+  text-transform: uppercase;
+}
+
+.bio-update,
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="date"],
+input:-webkit-autofill {
+  -webkit-text-fill-color: #ecececb9;
+  -webkit-box-shadow: 0 0 0px 1000px rgb(0, 0, 0, 0.9) inset;
+  font-size: 11px;
+  border: 1px solid transparent;
+}
+
+.bio-update,
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="date"]:focus,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+  -webkit-text-fill-color: #000;
+  box-shadow: 0 0 5px rgba(115, 93, 158, 1);
+  border: 1px solid rgba(115, 93, 158, 1);
+}
+
+textarea,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:focus {
+  -webkit-text-fill-color: #ecececb9;
+  font-size: 11px;
+}
+
+.btn {
+  background-color: #6747a0;
+  color: #fff;
+}
+
+.btn:hover {
+  color: rgba(255, 255, 255, 1);
+  box-shadow: 0 5px 15px rgba(145, 92, 182, 0.4);
+}
+
+.alert {
+  padding: 10px;
+  text-align: center;
+  font-size: 11px;
+}
+
+footer {
+  text-align: center;
+  color: gray;
+  font-size: 12px;
+  position: fixed;
+  bottom: 20px;
+  right: -1px;
+  width: 100%;
+}
+
+/* ---------------------------------------------------
+                    SIDEBAR STYLE
+----------------------------------------------------- */
+
+.sidebar {
+  height: 100%;
+  width: 85px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: rgb(32, 34, 42, 0.5);
+  transition: 0.5s;
+  overflow-x: hidden;
+  padding-top: 160px;
+  padding-right: 0;
+  white-space: nowrap;
+}
+
+.sidebar a {
+  padding: 8px 0 8px 30px;
+  font-size: 17px;
+  display: block;
+}
+
+.sidebar a:hover {
+  background: #20222a;
+}
+
+main .sidebar {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+.material-icons,
+.icon-text {
+  vertical-align: middle;
+}
+
+.material-icons.nav-icons {
+  padding-bottom: 3px;
+  margin-right: 30px;
+}
+
+.main {
+  padding: 16px;
+  margin-left: 85px;
+  transition: margin-left 0.5s;
+}
+
+@media screen and (max-height: 450px) {
+  .sidebar {
+    padding-top: 15px;
+  }
+  .sidebar a {
+    font-size: 18px;
+  }
+}
+
+/* ---------------------------------------------------
+                    CONTENT STYLE
+----------------------------------------------------- */
+
+.container {
+  width: 600px;
+  margin: 0 auto;
+  padding-top: 130px;
+  min-height: 100vh;
+  transition: all 0.3s;
+  font-size: 14px;
+}

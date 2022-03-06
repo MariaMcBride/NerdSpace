@@ -1,0 +1,49 @@
+/* ---------------------------------------------------
+                  EDIT PROFILE
+----------------------------------------------------- */
+
+.edit-card,
+.nav-tabs > li.nav-item > button.nav-link.active,
+.nav-tabs > li.nav-item > button.nav-link:hover,
+.nav-tabs > li.nav-item > button.nav-link:focus {
+  background-color: #20222a;
+  border: #20222a;
+  color: #ececec;
+}
+
+.nav-tabs > li.nav-item > button.nav-link {
+  background-color: rgb(32, 34, 42, 0.5);
+  font-weight: bold;
+  color: #6747a0;
+}
+
+.nav-tabs,
+.active {
+  border-bottom: 1px solid #20222a;
+  margin-bottom: -2px;
+}
+
+.edit-card {
+  padding: 38px 48px;
+  border-radius: 0.25rem;
+}
+
+::-webkit-file-upload-button {
+  background: #6747a0;
+  color: white;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.875rem;
+  border-radius: 0.2rem;
+  border-color: #6747a0;
+  transition: all 0.15s ease;
+  letter-spacing: 1px;
+  box-sizing: border-box;
+  outline: none;
+  cursor: pointer;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  user-select: none;
+  border: 1px solid transparent;
+  margin-right: 10px;
+}
